@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guard Gardens Ultimate | الفخامة الرقمية</title>
+
+  <meta name="description" content="Guard Gardens منصة رقمية حديثة لبيع صناديق البستنة، النصائح الزراعية، دفتر النبات، المدونة، واستشارات العملاء." />
+  <meta name="theme-color" content="#2ecc71" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #2ecc71;
+      --primary-dark: #27ae60;
+      --neon: #00ff88;
+      --gold: #c5a059;
+      --danger: #ff5c5c;
+      --warning: #f39c12;
+      --info: #3498db;
+      --transition: all 0.35s ease;
+      --radius: 24px;
+
+      --bg-body: #080808;
+      --bg-card: rgba(22, 22, 22, 0.92);
+      --bg-nav: rgba(10, 10, 10, 0.98);
+      --text-main: #ffffff;
+      --text-sub: #a0a0a0;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 25px 50px rgba(0,0,0,0.6);
+      --glass: blur(15px);
+    }	
+
+    body.light-mode {
+      --bg-body: #f4f7f5;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-nav: rgba(255, 255, 255, 0.96);
+      --text-main: #111;
+      --text-sub: #555;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 18px 40px rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tajawal', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    html:focus-within {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-body);
+      color: var(--text-main);
+      transition: var(--transition);
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea, select { font-family: inherit; }
+
+    button:focus,
+    input:focus,
+    textarea:focus,
+    select:focus,
+    .nav-btn:focus,
+    a:focus {
+      outline: 3px solid rgba(46,204,113,0.35);
+      outline-offset: 3px;
+    }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-body); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      right: 20px;
+      background: var(--primary);
+      color: #000;
+      padding: 12px 18px;
+      border-radius: 12px;
+      z-index: 100000;
+      font-weight: 900;
+      transition: var(--transition);
+    }
+
+    .skip-link:focus {
+      top: 20px;
+    }
+
+    /* ===================== LOGIN SCREEN ===================== */
+    .login-overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1600') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 430px;
+      background: rgba(10, 10, 10, 0.86);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      padding: 35px 28px;
+      box-shadow: var(--shadow);
+      animation: fadeUp .8s ease;
+    }
+
+    .login-box h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .login-box p {
+      color: #ddd;
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+
+    .login-box .input-group {
+      margin-bottom: 16px;
+    }
+
+    .login-box label {
+      display: block;
+      margin-bottom: 8px;
+      color: #eee;
+      font-weight: 700;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      outline: none;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .login-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46,204,113,0.15);
+    }
+
+    .btn-main, .btn-ghost, .btn-danger, .btn-warning {
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 800;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .btn-main {
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 10px 25px rgba(46,204,113,0.25);
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(46,204,113,0.35);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .btn-warning {
+      background: var(--warning);
+      color: #000;
+    }
+
+    .btn-block { width: 100%; }
+
+    .login-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    /* ===================== NAV ===================== */
+    nav {
+      background: var(--bg-nav);
+      backdrop-filter: var(--glass);
+      height: 95px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4%;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links > li {
+      list-style: none;
+      position: relative;
+    }
+
+    .nav-btn {
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+
+    .nav-btn:hover {
+      background: rgba(46,204,113,0.12);
+      color: var(--neon);
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 56px;
+      right: 0;
+      background: var(--bg-card);
+      min-width: 290px;
+      border-radius: 18px;
+      padding: 10px 0;
+      box-shadow: var(--shadow);
+      display: none;
+      border: 1px solid var(--border);
+      animation: dropFade .3s ease;
+      z-index: 99999;
+    }
+
+    .nav-links li:hover .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.92rem;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .dropdown a:last-child { border-bottom: none; }
+
+    .dropdown a:hover {
+      background: var(--primary);
+      color: #000;
+      padding-right: 28px;
+    }
+
+    @keyframes dropFade {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .theme-switch {
+      width: 62px;
+      height: 30px;
+      background: #333;
+      border-radius: 30px;
+      position: relative;
+      cursor: pointer;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .theme-switch .circle {
+      width: 24px;
+      height: 24px;
+      background: var(--primary);
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 0.78rem;
+    }
+
+    body.light-mode .theme-switch { background: #ddd; }
+    body.light-mode .theme-switch .circle {
+      transform: translateX(-32px);
+      background: #f39c12;
+      color: #fff;
+    }
+
+    .font-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 6px;
+      border-radius: 999px;
+    }
+
+    .font-controls button {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-weight: 900;
+      background: var(--bg-card);
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .font-controls button:hover {
+      background: var(--primary);
+      color: #000;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ===================== STRUCTURE ===================== */
+    main {
+      min-height: 100vh;
+    }
+
+    .page {
+      display: none;
+      padding: 145px 8% 80px;
+      min-height: 100vh;
+      animation: pageIn .5s ease;
+    }
+
+    .page.active { display: block; }
+
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(12px); filter: blur(10px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      margin-bottom: 14px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .section-title span { color: var(--primary); }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-sub);
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .mega-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 28px;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      border-radius: 28px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(46,204,113,0.35);
+    }
+
+    .glass-card i.icon-big {
+      font-size: 2.6rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .hero-banner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 35px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .hero-banner img {
+      border-radius: 35px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+
+    .hero-content h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+
+    .hero-content h2 span { color: var(--primary); }
+
+    .hero-content p {
+      color: var(--text-sub);
+      line-height: 2;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .why-us-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .why-us-icon {
+      background: var(--primary);
+      color: #000;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    .product-card img,
+    .blog-card img,
+    .photo-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .product-price {
+      color: var(--neon);
+      font-weight: 900;
+      font-size: 1.1rem;
+      margin: 12px 0;
+    }
+
+    .muted {
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(46,204,113,0.12);
+      color: var(--primary);
+      border: 1px solid rgba(46,204,113,0.18);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .form-card input,
+    .form-card textarea,
+    .form-card select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      margin-bottom: 14px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-card input:focus,
+    .form-card textarea:focus,
+    .form-card select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46,204,113,0.12);
+    }
+
+    .form-card textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .survey-option {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      font-weight: 700;
+    }
+
+    .survey-option:hover {
+      background: rgba(46,204,113,0.12);
+      border-color: rgba(46,204,113,0.25);
+    }
+
+    .survey-result {
+      margin-top: 14px;
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .cart-row:last-child { border-bottom: none; }
+
+    .empty-state {
+      text-align: center;
+      color: var(--text-sub);
+      line-height: 2;
+      padding: 25px 10px;
+    }
+
+    .pill {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-filter-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 35px;
+    }
+
+    .search-filter-bar input,
+    .search-filter-bar select {
+      min-width: 250px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .feature-list li {
+      margin-bottom: 10px;
+      color: var(--text-sub);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.8;
+    }
+
+    .feature-list li i {
+      color: var(--primary);
+      margin-top: 5px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      color: var(--text-main);
+      border: none;
+      padding: 18px 20px;
+      text-align: right;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    footer {
+      background: #000;
+      padding: 60px 8%;
+      color: #fff;
+      text-align: center;
+      border-top: 2px solid var(--primary);
+    }
+
+    /* ===================== CHAT ===================== */
+    .chat-widget {
+      position: fixed;
+      bottom: 22px;
+      left: 22px;
+      z-index: 9999;
+    }
+
+    .chat-toggle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: var(--primary);
+      color: #000;
+      font-size: 1.4rem;
+      font-weight: 900;
+      box-shadow: 0 15px 35px rgba(46,204,113,0.3);
+    }
+
+    .chat-box {
+      width: 360px;
+      max-width: calc(100vw - 30px);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: none;
+      margin-bottom: 14px;
+    }
+
+    .chat-header {
+      background: var(--primary);
+      color: #000;
+      padding: 16px 18px;
+      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-messages {
+      height: 320px;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      padding: 12px 14px;
+      border-radius: 18px;
+      max-width: 85%;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .msg.bot {
+      background: rgba(255,255,255,0.06);
+      align-self: flex-start;
+    }
+
+    .msg.user {
+      background: rgba(46,204,113,0.18);
+      align-self: flex-end;
+      border: 1px solid rgba(46,204,113,0.2);
+    }
+
+    .chat-input-area {
+      display: flex;
+      gap: 10px;
+      padding: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-main);
+      outline: none;
+    }
+
+    /* ===================== MOBILE ===================== */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
+      nav {
+        height: auto;
+        padding: 16px 4%;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--bg-card);
+        padding: 15px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .dropdown {
+        position: static;
+        display: block;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding: 8px 0 0;
+        min-width: unset;
+      }
+
+      .dropdown a {
+        background: rgba(255,255,255,0.03);
+        border-radius: 12px;
+        margin-bottom: 8px;
+        border-bottom: none;
+      }
+
+      .page {
+        padding-top: 180px;
+      }
+
+      .top-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .glass-card {
+        padding: 22px;
+      }
+
+      .chat-box {
+        width: 100%;
+      }
+
+      .chat-widget {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .hero-content h2 {
+        font-size: 2.1rem;
+      }
+
+      .search-filter-bar input,
+      .search-filter-bar select {
+        width: 100%;
+        min-width: unset;
+      }
+    }
+  </style>
+</head>
+<body id="mainBody">
+
+  <a href="#mainContent" class="skip-link">تخطي إلى المحتوى</a>
+
+  <!-- ===================== LOGIN SCREEN ===================== -->
+  <div class="login-overlay" id="loginOverlay" aria-label="شاشة تسجيل الدخول">
+    <div class="login-box">
+      <h1><i class="fas fa-leaf"></i> Guard Gardens</h1>
+      <p>مرحبًا بك في منصة Guard Gardens الرقمية.  
+      قم بتسجيل الدخول للوصول إلى المتجر، الخدمات، ودفتر النبات الشخصي.</p>
+
+      <div class="input-group">
+        <label for="loginName">الاسم أو البريد الإلكتروني</label>
+        <input type="text" id="loginName" placeholder="أدخل اسمك أو بريدك الإلكتروني" aria-label="الاسم أو البريد الإلكتروني">
+      </div>
+
+      <div class="input-group">
+        <label for="loginPassword">كلمة المرور</label>
+        <input type="password" id="loginPassword" placeholder="أدخل كلمة المرور" aria-label="كلمة المرور">
+      </div>
+
+      <div class="login-actions">
+        <button class="btn-main btn-block" onclick="loginUser()" aria-label="تسجيل الدخول"><i class="fas fa-right-to-bracket"></i> تسجيل الدخول</button>
+        <button class="btn-ghost btn-block" onclick="googleLogin()" aria-label="تسجيل الدخول عبر Google"><i class="fab fa-google"></i> تسجيل الدخول عبر Google</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== NAV ===================== -->
+  <nav aria-label="شريط التنقل الرئيسي">
+    <div class="logo" onclick="showPage('page-home')" tabindex="0" role="button" aria-label="العودة إلى الصفحة الرئيسية">
+      <i class="fas fa-leaf"></i> GUARD GARDENS
+    </div>
+
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="فتح القائمة">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><div class="nav-btn" onclick="showPage('page-home')" tabindex="0"><i class="fas fa-home"></i> الرئيسية</div></li>
+      <li><div class="nav-btn" onclick="showPage('page-about')" tabindex="0"><i class="fas fa-building"></i> عن الشركة</div></li>
+      <li><div class="nav-btn" onclick="showPage('page-why-us')" tabindex="0"><i class="fas fa-star"></i> لماذا نحن</div></li>
+
+      <li>
+        <div class="nav-btn" tabindex="0"><i class="fas fa-seedling"></i> الأنشطة <i class="fas fa-chevron-down"></i></div>
+        <div class="dropdown">
+          <a onclick="showPage('page-open-gardens')"><i class="fas fa-map"></i> حدائق مفتوحة</a>
+          <a onclick="showPage('page-monthly-checklist')"><i class="fas fa-calendar-day"></i> قائمة تحقق شهرية</a>
+          <a onclick="showPage('page-greenhouse')"><i class="fas fa-cloud-sun"></i> نصائح البيوت البلاستيكية</a>
+          <a onclick="showPage('page-maintenance')"><i class="fas fa-tools"></i> نصائح صيانة الحدائق</a>
+          <a onclick="showPage('page-jobs')"><i class="fas fa-briefcase"></i> وظائف التخصصات</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="nav-btn" tabindex="0"><i class="fas fa-concierge-bell"></i> الخدمات <i class="fas fa-chevron-down"></i></div>
+        <div class="dropdown">
+          <a onclick="showPage('page-notebook')"><i class="fas fa-book"></i> دفتر النبات</a>
+          <a onclick="showPage('page-photo-contest')"><i class="fas fa-camera-retro"></i> مسابقات التصوير</a>
+          <a onclick="showPage('page-surveys')"><i class="fas fa-chart-pie"></i> استطلاعات الرأي</a>
+          <a onclick="showPage('page-contact')"><i class="fas fa-envelope"></i> التواصل وطلب معلومات</a>
+          <a onclick="showPage('page-chat-info')"><i class="fas fa-comments"></i> محادثات الاستشارة</a>
+          <a onclick="showPage('page-faq')"><i class="fas fa-circle-question"></i> الأسئلة الشائعة</a>
+        </div>
+      </li>
+
+      <li><div class="nav-btn" onclick="showPage('page-boxes')" tabindex="0"><i class="fas fa-box-open"></i> المتجر</div></li>
+      <li><div class="nav-btn" onclick="showPage('page-blog')" tabindex="0"><i class="fas fa-newspaper"></i> المدونة</div></li>
+      <li><div class="nav-btn" onclick="showPage('page-faq')" tabindex="0"><i class="fas fa-circle-question"></i> FAQ</div></li>
+    </ul>
+
+    <div class="top-actions">
+      <div class="theme-switch" onclick="toggleTheme()" id="themeBtn" title="تبديل الوضع" role="button" tabindex="0" aria-label="تبديل الوضع">
+        <div class="circle" id="themeCircle"><i class="fas fa-moon"></i></div>
+      </div>
+
+      <div class="font-controls" title="التحكم بحجم الخط">
+        <button onclick="changeFontSize(-1)" aria-label="تصغير الخط">A-</button>
+        <button onclick="resetFontSize()" aria-label="إعادة حجم الخط">A</button>
+        <button onclick="changeFontSize(1)" aria-label="تكبير الخط">A+</button>
+      </div>
+
+      <div class="nav-btn" onclick="showPage('page-cart')" style="position: relative;" tabindex="0" aria-label="سلة المشتريات">
+        <i class="fas fa-shopping-cart" style="font-size: 1.25rem;"></i>
+        <span id="cartCount" style="position:absolute; top:-4px; right:-4px; background:var(--neon); color:#000; border-radius:50%; width:20px; height:20px; font-size:0.72rem; display:flex; align-items:center; justify-content:center; font-weight:900;">0</span>
+      </div>
+
+      <div class="nav-btn" onclick="logoutUser()" title="تسجيل الخروج" tabindex="0" aria-label="تسجيل الخروج">
+        <i class="fas fa-right-from-bracket"></i>
+      </div>
+    </div>
+  </nav>
+
+  <main id="mainContent">
+    <!-- ===================== HOME ===================== -->
+    <div id="page-home" class="page active">
+      <h1 class="section-title">مستقبل الزراعة <span>بين يديك</span></h1>
+      <p class="section-subtitle">
+        Guard Gardens شركة إلكترونية متخصصة في بيع صناديق البستنة للمبتدئين والهواة في أجزاء من أوروبا وآسيا ونيوزيلندا،
+        مع خدمات رقمية حديثة لتسهيل تجربة الزراعة المنزلية، وتقديم المشورة، والمدونة، والمساعدة العامة.
+      </p>
+
+      <div class="hero-banner">
+        <div class="hero-content">
+          <span class="tag"><i class="fas fa-sparkles"></i> تجربة رقمية احترافية</span>
+          <h2>نحن لا نبيع بذورًا فقط… <span>بل نصمم أسلوب حياة أخضر</span></h2>
+          <p>
+            اكتشف الصناديق الشهرية، النصائح الزراعية، دفتر النبات الرقمي، مسابقات التصوير،
+            استطلاعات الرأي، المدونة، واستشارات الشات الذكي — كل ذلك في منصة واحدة حديثة وجذابة.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-main" onclick="showPage('page-boxes')"><i class="fas fa-box-open"></i> ابدأ التسوق</button>
+            <button class="btn-ghost" onclick="showPage('page-about')"><i class="fas fa-circle-info"></i> اعرف أكثر</button>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-box">
+              <h3>8</h3>
+              <p>صناديق رئيسية</p>
+            </div>
+            <div class="stat-box">
+              <h3>12</h3>
+              <p>خطة شهرية</p>
+            </div>
+            <div class="stat-box">
+              <h3>24/7</h3>
+              <p>مساعدة رقمية</p>
+            </div>
+            <div class="stat-box">
+              <h3>100%</h3>
+              <p>تصميم متجاوب</p>
+            </div>
+          </div>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1550948390-6eb7fa773072?q=80&w=1200" alt="شخص يعمل في الزراعة المنزلية وسط نباتات خضراء">
+      </div>
+    </div>
+
+    <!-- ===================== ABOUT ===================== -->
+    <div id="page-about" class="page">
+      <h1 class="section-title">عن <span>Guard Gardens</span></h1>
+      <p class="section-subtitle">نبذة تعريفية عن الشركة والخدمات والمنتجات التي تقدمها للعملاء المحتملين.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card">
+          <i class="fas fa-globe-europe icon-big"></i>
+          <h3>نشاط دولي</h3>
+          <p class="muted">
+            تعمل Guard Gardens في أجزاء من أوروبا وآسيا ونيوزيلندا، وتركز على تقديم تجربة بستنة منزلية ممتعة وسهلة.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-box-open icon-big"></i>
+          <h3>صناديق بستنة للمبتدئين والهواة</h3>
+          <p class="muted">
+            نوفر صناديق مصممة بعناية لتناسب المبتدئين، الهواة، والعائلات، مع منتجات موسمية وتجارب تعليمية ممتعة.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-laptop-code icon-big"></i>
+          <h3>تحول رقمي</h3>
+          <p class="muted">
+            تم تصميم هذا الموقع لتحسين استخدام الشركة لتكنولوجيا المعلومات وتقديم تجربة استخدام حديثة وعصرية.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-headset icon-big"></i>
+          <h3>مساعدة ومشورة</h3>
+          <p class="muted">
+            نوفر شات استشاري، مدونة تعليمية، ونموذج تواصل لمساعدة العملاء في اختيار الصندوق المناسب.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== WHY US ===================== -->
+    <div id="page-why-us" class="page">
+      <h1 class="section-title">لماذا <span>Guard Gardens؟</span></h1>
+      <p class="section-subtitle">أسباب تجعلنا خيارًا مثاليًا لعشاق الزراعة المنزلية.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card">
+          <div class="why-us-item">
+            <div class="why-us-icon"><i class="fas fa-microchip"></i></div>
+            <div>
+              <h3>تكنولوجيا ذكية</h3>
+              <p class="muted">تصميم رقمي حديث وخدمات ذكية تسهّل إدارة تجربة البستنة.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="why-us-item">
+            <div class="why-us-icon"><i class="fas fa-seedling"></i></div>
+            <div>
+              <h3>منتجات مناسبة للمبتدئين</h3>
+              <p class="muted">نوفر صناديق وخطط مبسطة لتسهيل بداية الزراعة المنزلية.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="why-us-item">
+            <div class="why-us-icon"><i class="fas fa-truck-fast"></i></div>
+            <div>
+              <h3>خدمة اشتراك وشحن</h3>
+              <p class="muted">صناديق شهرية وأسبوعية وتجارب مخصصة للهدايا والشركات.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="why-us-item">
+            <div class="why-us-icon"><i class="fas fa-headset"></i></div>
+            <div>
+              <h3>استشارات ومساعدة</h3>
+              <p class="muted">شات استشارات ونموذج تواصل للحصول على مساعدة ومعلومات إضافية.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== OPEN GARDENS ===================== -->
+    <div id="page-open-gardens" class="page">
+      <h1 class="section-title">حدائق <span>مفتوحة</span></h1>
+      <p class="section-subtitle">استكشف أفكارًا لحدائق منزلية مفتوحة ومساحات خضراء ملهمة.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card">
+          <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800" alt="حديقة منزلية مفتوحة بتصميم عصري" style="border-radius:22px; margin-bottom:18px;">
+          <h3>حديقة منزلية عصرية</h3>
+          <p class="muted">تصميم أنيق مع توزيع نباتات مناسب للمساحات الصغيرة والمتوسطة.</p>
+        </div>
+
+        <div class="glass-card">
+          <img src="https://images.unsplash.com/photo-1599685315640-53e92b94fce8?q=80&w=800" alt="جلسة خارجية وسط النباتات الخضراء" style="border-radius:22px; margin-bottom:18px;">
+          <h3>مساحة استرخاء خضراء</h3>
+          <p class="muted">دمج النباتات مع الجلسات الخارجية لإضفاء جو هادئ ومريح.</p>
+        </div>
+
+        <div class="glass-card">
+          <img src="https://images.unsplash.com/photo-1515150144380-bca9f1650ed9?q=80&w=800" alt="حديقة زهور منزلية مفتوحة" style="border-radius:22px; margin-bottom:18px;">
+          <h3>حديقة زهور موسمية</h3>
+          <p class="muted">حلول جميلة لتنسيق الزهور البرية والملونة في المساحات المفتوحة.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== MONTHLY CHECKLIST ===================== -->
+    <div id="page-monthly-checklist" class="page">
+      <h1 class="section-title">قائمة التحقق <span>الشهرية</span></h1>
+      <p class="section-subtitle">خطة شهرية تساعدك على متابعة أعمال البستنة على مدار السنة.</p>
+      <div class="mega-grid" id="checklistGrid"></div>
+    </div>
+
+    <!-- ===================== GREENHOUSE ===================== -->
+    <div id="page-greenhouse" class="page">
+      <h1 class="section-title">نصائح <span>البيوت البلاستيكية</span></h1>
+      <p class="section-subtitle">أفكار ونصائح عملية للمبتدئين لإدارة بيت بلاستيكي منزلي.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card">
+          <i class="fas fa-temperature-high icon-big"></i>
+          <h3>التهوية والحرارة</h3>
+          <p class="muted">حافظ على تهوية مناسبة داخل البيت البلاستيكي لتجنب الرطوبة الزائدة وارتفاع الحرارة.</p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-droplet icon-big"></i>
+          <h3>الري المنتظم</h3>
+          <p class="muted">تابع مستوى الرطوبة باستمرار ووازن بين الري الجيد وتجنب التشبع.</p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-sun icon-big"></i>
+          <h3>الضوء المناسب</h3>
+          <p class="muted">ضع البيت البلاستيكي في مكان يحصل على إضاءة طبيعية كافية يوميًا.</p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-fan icon-big"></i>
+          <h3>التحكم في الرطوبة</h3>
+          <p class="muted">استخدم التهوية والفتح الدوري للأغطية للمساعدة في تقليل الأمراض الفطرية.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== MAINTENANCE ===================== -->
+    <div id="page-maintenance" class="page">
+      <h1 class="section-title">نصائح <span>صيانة الحدائق</span></h1>
+      <p class="section-subtitle">إرشادات بسيطة للحفاظ على الحديقة بأفضل شكل ممكن.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card">
+          <i class="fas fa-scissors icon-big"></i>
+          <h3>التقليم المنتظم</h3>
+          <p class="muted">يساعد على تجديد النبات وتحسين الشكل العام للحديقة.</p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-bug icon-big"></i>
+          <h3>مراقبة الآفات</h3>
+          <p class="muted">تابع النباتات باستمرار للكشف المبكر عن أي مشكلة.</p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-faucet-drip icon-big"></i>
+          <h3>إدارة الري</h3>
+          <p class="muted">قم بتعديل الري حسب الفصل ودرجة الحرارة ونوع النباتات.</p>
+        </div>
+
+        <div class="glass-card">
+          <i class="fas fa-soap icon-big"></i>
+          <h3>تنظيف الأدوات</h3>
+          <p class="muted">حافظ على نظافة أدوات الزراعة لتقليل انتقال الأمراض بين النباتات.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== JOBS ===================== -->
+    <div id="page-jobs" class="page">
+      <h1 class="section-title">وظائف <span>التخصصات</span></h1>
+      <p class="section-subtitle">فرص وظيفية افتراضية ضمن أقسام الشركة المختلفة.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card">
+          <h3>منسق منتجات بستنة</h3>
+          <p class="muted">الإشراف على تطوير الصناديق وتجهيز المحتوى والمنتجات الموسمية.</p>
+          <button class="btn-main" style="margin-top:15px;">تقديم طلب</button>
+        </div>
+
+        <div class="glass-card">
+          <h3>كاتب محتوى زراعي</h3>
+          <p class="muted">إعداد النصائح، المقالات، والإرشادات التعليمية للموقع والمدونة.</p>
+          <button class="btn-main" style="margin-top:15px;">تقديم طلب</button>
+        </div>
+
+        <div class="glass-card">
+          <h3>دعم عملاء رقمي</h3>
+          <p class="muted">التواصل مع العملاء وتقديم المساعدة عبر الشات والبريد الإلكتروني.</p>
+          <button class="btn-main" style="margin-top:15px;">تقديم طلب</button>
+        </div>
+
+        <div class="glass-card">
+          <h3>منسق شحن واشتراكات</h3>
+          <p class="muted">إدارة الطلبات المتكررة، الاشتراكات، والهدايا المخصصة للشركات.</p>
+          <button class="btn-main" style="margin-top:15px;">تقديم طلب</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== NOTEBOOK ===================== -->
+    <div id="page-notebook" class="page">
+      <h1 class="section-title">دفتر النبات <span>الرقمي</span></h1>
+      <p class="section-subtitle">سجل ملاحظاتك وتابع تقدم نباتاتك بسهولة.</p>
+
+      <div class="glass-card form-card" style="max-width: 850px; margin: 0 auto;">
+        <label for="plantInput">اسم النبتة</label>
+        <input type="text" id="plantInput" placeholder="اسم النبتة">
+
+        <label for="noteInput">ملاحظات التقدم</label>
+        <textarea id="noteInput" placeholder="اكتب ملاحظاتك (مثال: تم الري اليوم / تمت إضافة سماد)"></textarea>
+
+        <button class="btn-main btn-block" onclick="addNote()"><i class="fas fa-cloud-arrow-up"></i> حفظ الملاحظة</button>
+
+        <div id="notesList" style="margin-top: 30px;"></div>
+      </div>
+    </div>
+
+    <!-- ===================== PHOTO CONTEST ===================== -->
+    <div id="page-photo-contest" class="page">
+      <h1 class="section-title">مسابقات <span>التصوير</span></h1>
+      <p class="section-subtitle">صفحة مخصصة لرفع صور النباتات والحدائق للمشاركة في المسابقات.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card form-card">
+          <h3 style="margin-bottom:18px;">رفع صورة للمسابقة</h3>
+          <label for="photoTitle">عنوان الصورة</label>
+          <input type="text" id="photoTitle" placeholder="عنوان الصورة">
+
+          <label for="photoUpload">اختر صورة</label>
+          <input type="file" id="photoUpload" accept="image/*">
+
+          <button class="btn-main btn-block" onclick="uploadPhoto()"><i class="fas fa-upload"></i> رفع الصورة</button>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="margin-bottom:18px;">معرض المشاركات</h3>
+          <div id="photoGallery" class="mega-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SURVEYS ===================== -->
+    <div id="page-surveys" class="page">
+      <h1 class="section-title">استطلاعات <span>الرأي</span></h1>
+      <p class="section-subtitle">استطلاع موسمي لمعرفة تفضيلات العملاء.</p>
+
+      <div class="glass-card" style="max-width: 850px; margin: 0 auto;">
+        <h3 style="margin-bottom:20px;">ما هو الصندوق الأكثر جذبًا لك؟</h3>
+
+        <div class="survey-option" onclick="voteSurvey('Oddbox')">Oddbox</div>
+        <div class="survey-option" onclick="voteSurvey('Flourish')">Flourish</div>
+        <div class="survey-option" onclick="voteSurvey('Cottage')">Cottage</div>
+        <div class="survey-option" onclick="voteSurvey('Corporate Gift Box')">Corporate Gift Box</div>
+
+        <div class="survey-result" id="surveyResult"></div>
+      </div>
+    </div>
+
+    <!-- ===================== STORE ===================== -->
+    <div id="page-boxes" class="page">
+      <h1 class="section-title">متجر <span>الصناديق</span></h1>
+      <p class="section-subtitle">اختر من بين الصناديق المتوفرة والمخصصة للمبتدئين والهواة.</p>
+
+      <div class="search-filter-bar">
+        <input type="text" id="productSearch" placeholder="ابحث عن صندوق..." oninput="renderStore()">
+        <select id="productFilter" onchange="renderStore()">
+          <option value="all">كل الصناديق</option>
+          <option value="weekly">أسبوعي</option>
+          <option value="monthly">شهري</option>
+          <option value="quarterly">سنوي / موسمي</option>
+          <option value="gift">هدايا / شركات</option>
+          <option value="beginner">مبتدئين</option>
+        </select>
+      </div>
+
+      <div class="mega-grid" id="storeGrid"></div>
+    </div>
+
+    <!-- ===================== BLOG ===================== -->
+    <div id="page-blog" class="page">
+      <h1 class="section-title">مدونة <span>الخبير</span></h1>
+      <p class="section-subtitle">مقالات ونصائح تعليمية لدعم العملاء وتقديم المشورة حول الصناديق المتوفرة.</p>
+
+      <div class="mega-grid">
+        <div class="glass-card blog-card">
+          <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=600" alt="تربة زراعية وأدوات بستنة">
+          <h3>أسرار التربة المثالية</h3>
+          <p class="muted">تعرف على مكونات التربة المناسبة لنجاح الزراعة المنزلية وتحسين نمو النباتات.</p>
+          <button class="btn-main" style="margin-top:15px;">اقرأ المزيد</button>
+        </div>
+
+        <div class="glass-card blog-card">
+          <img src="https://images.unsplash.com/photo-1581073107630-95747d559683?q=80&w=600" alt="سقي النباتات بطريقة منظمة">
+          <h3>الري الذكي في الصيف</h3>
+          <p class="muted">طرق مبتكرة للحفاظ على النباتات أثناء ارتفاع درجات الحرارة أو السفر.</p>
+          <button class="btn-main" style="margin-top:15px;">اقرأ المزيد</button>
+        </div>
+
+        <div class="glass-card blog-card">
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=600" alt="حديقة منزلية صغيرة للمبتدئين">
+          <h3>كيف تبدأ أول حديقة منزلية؟</h3>
+          <p class="muted">خطوات عملية وبسيطة تناسب المبتدئين لبدء تجربة بستنة ناجحة.</p>
+          <button class="btn-main" style="margin-top:15px;">اقرأ المزيد</button>
+        </div>
+
+        <div class="glass-card blog-card">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=600" alt="نباتات خضراء في أصص منزلية">
+          <h3>أفضل النباتات للمبتدئين</h3>
+          <p class="muted">تعرف على أسهل النباتات للعناية المنزلية وكيف تختار ما يناسبك.</p>
+          <button class="btn-main" style="margin-top:15px;">اقرأ المزيد</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CART ===================== -->
+    <div id="page-cart" class="page">
+      <h1 class="section-title">سلة <span>المشتريات</span></h1>
+      <p class="section-subtitle">كل منتج تختاره من الموقع يظهر هنا مباشرة.</p>
+
+      <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+        <div id="cartItems"></div>
+        <div id="cartTotal" style="text-align:center; font-size:1.7rem; margin-top:25px; font-weight:900;"></div>
+
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:25px;">
+          <button class="btn-main" onclick="checkout()"><i class="fas fa-credit-card"></i> إتمام الطلب</button>
+          <button class="btn-danger" onclick="clearCart()"><i class="fas fa-trash"></i> تفريغ السلة</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CONTACT ===================== -->
+    <div id="page-contact" class="page">
+      <h1 class="section-title">التواصل <span>مع الشركة</span></h1>
+      <p class="section-subtitle">للسؤال عن الصناديق المخصصة أو طلب المزيد من المعلومات.</p>
+
+      <div class="glass-card form-card" style="max-width: 850px; margin: 0 auto;">
+        <label for="contactName">الاسم الكامل</label>
+        <input type="text" id="contactName" placeholder="الاسم الكامل">
+
+        <label for="contactEmail">البريد الإلكتروني</label>
+        <input type="email" id="contactEmail" placeholder="البريد الإلكتروني">
+
+        <label for="contactType">نوع الطلب</label>
+        <select id="contactType">
+          <option value="">اختر نوع الطلب</option>
+          <option>طلب معلومات</option>
+          <option>صندوق مخصص</option>
+          <option>اشتراك شركة / هدية</option>
+          <option>استفسار عام</option>
+        </select>
+
+        <label for="contactMessage">الرسالة</label>
+        <textarea id="contactMessage" placeholder="اكتب رسالتك هنا..."></textarea>
+        <button class="btn-main btn-block" onclick="sendContact()"><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
+      </div>
+    </div>
+
+    <!-- ===================== CHAT INFO PAGE ===================== -->
+    <div id="page-chat-info" class="page">
+      <h1 class="section-title">محادثات <span>الاستشارة</span></h1>
+      <p class="section-subtitle">يمكنك استخدام زر الشات الموجود أسفل الصفحة للحصول على مساعدة سريعة.</p>
+
+      <div class="glass-card" style="max-width: 850px; margin: 0 auto;">
+        <h3 style="margin-bottom:15px;">ما الذي يقدمه الشات؟</h3>
+        <p class="muted">
+          الشات التلقائي يساعدك في:
+          <br>• معرفة أفضل صندوق مناسب لك
+          <br>• فهم الاشتراكات المتاحة
+          <br>• معرفة كيفية استخدام المنتجات
+          <br>• الحصول على توجيه سريع قبل التواصل المباشر مع الشركة
+          <br>• مقارنة الصناديق المتاحة للمبتدئين والهواة
+        </p>
+      </div>
+    </div>
+
+    <!-- ===================== FAQ ===================== -->
+    <div id="page-faq" class="page">
+      <h1 class="section-title">الأسئلة <span>الشائعة</span></h1>
+      <p class="section-subtitle">إجابات سريعة على أكثر الأسئلة شيوعًا من العملاء.</p>
+
+      <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">ما أفضل صندوق للمبتدئين؟ <i class="fas fa-plus"></i></button>
+          <div class="faq-answer">عادةً ما يكون Flourish خيارًا ممتازًا للمبتدئين لأنه يتضمن بذورًا وأدوات أساسية تساعد على البداية.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">هل توجد صناديق هدايا للشركات؟ <i class="fas fa-plus"></i></button>
+          <div class="faq-answer">نعم، توجد صناديق مخصصة للهدايا والاشتراكات للشركات، ويمكن ترتيبها عبر صفحة التواصل.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">هل الموقع مناسب للجوال؟ <i class="fas fa-plus"></i></button>
+          <div class="faq-answer">نعم، تم تصميم الموقع بتخطيط تكيفي ليتوافق مع الجوال وسطح المكتب.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">هل أستطيع حفظ ملاحظات النباتات؟ <i class="fas fa-plus"></i></button>
+          <div class="faq-answer">نعم، عبر صفحة دفتر النبات يمكنك حفظ ومتابعة تقدم نباتاتك بسهولة.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+      <i class="fas fa-leaf"></i> GUARD GARDENS
+    </div>
+    <p>جميع الحقوق محفوظة &copy; 2026 — نحن نزرع المستقبل.</p>
+  </footer>
+
+  <!-- ===================== CHAT WIDGET ===================== -->
+  <div class="chat-widget">
+    <div class="chat-box" id="chatBox">
+      <div class="chat-header">
+        <span><i class="fas fa-comments"></i> مستشار Guard Gardens</span>
+        <button onclick="toggleChat()" style="background:none;border:none;color:#000;font-size:1.1rem;cursor:pointer;" aria-label="إغلاق المحادثة">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">مرحبًا 👋 كيف أستطيع مساعدتك اليوم؟</div>
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeydown="handleChatKey(event)" aria-label="رسالة الشات">
+        <button class="btn-main" style="padding:12px 16px;" onclick="sendChatMessage()" aria-label="إرسال الرسالة">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggleChat()" aria-label="فتح الشات">
+      <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <script>
+    /* ===================== DATA ===================== */
+    const months = [
+      "يناير: تقليم الأشجار",
+      "فبراير: زراعة البذور الداخلية",
+      "مارس: نقل الشتلات",
+      "أبريل: تسميد ربيعي",
+      "مايو: وقاية من الحشرات",
+      "يونيو: زيادة الري",
+      "يوليو: تظليل النباتات",
+      "أغسطس: تنظيف التربة",
+      "سبتمبر: تجهيز موسم الشتاء",
+      "أكتوبر: زراعة الورقيات",
+      "نوفمبر: تقليل الري",
+      "ديسمبر: صيانة الأدوات"
+    ];
+
+    const boxes = [
+      {
+        id: 1,
+        name: "Oddbox",
+        price: 25,
+        period: "شحن أسبوعي",
+        type: "weekly",
+        level: "beginner",
+        desc: "الخضروات غير الطبيعية التي رفضتها محلات السوبرماركت، مع بذور خضروات مناسبة للمبتدئين.",
+        features: [
+          "الخضروات غير الطبيعية التي رفضتها محلات السوبرماركت",
+          "شحن أسبوعي",
+          "بذور خضروات",
+          "مناسب للمبتدئين"
+        ],
+        img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=900"
+      },
+      {
+        id: 2,
+        name: "Flourish",
+        price: 60,
+        period: "أربعة صناديق في السنة",
+        type: "quarterly",
+        level: "beginner",
+        desc: "بذور مع صواني البذور + علبة ري + صابون مصنوع يدويًا لم يختبر على الحيوانات.",
+        features: [
+          "أربعة صناديق في السنة",
+          "بذور مع صواني البذور",
+          "علبة ري",
+          "صابون مصنوع يدويًا لم يختبر على الحيوانات"
+        ],
+        img: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=900"
+      },
+      {
+        id: 3,
+        name: "Cottage",
+        price: 35,
+        period: "صندوق شهري",
+        type: "monthly",
+        level: "beginner",
+        desc: "بذور الزهور البرية + بطاقات حقائق ومعلومات + علامات بذور وخيوط.",
+        features: [
+          "صندوق شهري",
+          "بذور الزهور البرية",
+          "بطاقات الحقائق والمعلومات",
+          "علامات البذور والخيوط"
+        ],
+        img: "https://images.unsplash.com/photo-1592150621344-828ec189f71b?q=80&w=900"
+      },
+      {
+        id: 4,
+        name: "Corporate Gift Box",
+        price: 120,
+        period: "حسب الطلب",
+        type: "gift",
+        level: "gift",
+        desc: "صناديق مخصصة للاشتراكات والهدايا للشركات. يجب على العملاء التواصل مع الشركة لترتيب الصندوق.",
+        features: [
+          "صندوق مخصص للشركات",
+          "هدايا واشتراكات",
+          "ترتيب خاص",
+          "يتطلب التواصل مع الشركة"
+        ],
+        img: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=900"
+      },
+      {
+        id: 5,
+        name: "Urban Balcony Box",
+        price: 40,
+        period: "صندوق شهري",
+        type: "monthly",
+        level: "beginner",
+        desc: "صندوق مخصص للزراعة في الشرفات الصغيرة مع بذور سهلة النمو وأدوات بسيطة.",
+        features: [
+          "مناسب للشرفات",
+          "بذور سهلة النمو",
+          "أدوات أساسية",
+          "مناسب للمساحات الصغيرة"
+        ],
+        img: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=900"
+      },
+      {
+        id: 6,
+        name: "Kids Grow Box",
+        price: 32,
+        period: "صندوق شهري",
+        type: "monthly",
+        level: "beginner",
+        desc: "صندوق تعليمي للأطفال يحتوي على بذور ممتعة وأنشطة بسيطة لتعلم الزراعة.",
+        features: [
+          "مناسب للأطفال",
+          "أنشطة تعليمية",
+          "بذور ممتعة",
+          "تجربة تفاعلية"
+        ],
+        img: "https://images.unsplash.com/photo-1459156212016-c812468e2115?q=80&w=900"
+      },
+      {
+        id: 7,
+        name: "Herb Kitchen Box",
+        price: 28,
+        period: "شحن أسبوعي",
+        type: "weekly",
+        level: "beginner",
+        desc: "أعشاب مطبخ منزلية سهلة الزراعة مثل النعناع والريحان والبقدونس.",
+        features: [
+          "أعشاب منزلية",
+          "شحن أسبوعي",
+          "مناسب للمطبخ",
+          "سهل العناية"
+        ],
+        img: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=900"
+      },
+      {
+        id: 8,
+        name: "Wild Bloom Deluxe",
+        price: 75,
+        period: "أربعة صناديق في السنة",
+        type: "quarterly",
+        level: "gift",
+        desc: "نسخة فاخرة لعشاق الزهور البرية تتضمن بذورًا موسمية وعلامات وملحقات إضافية.",
+        features: [
+          "نسخة فاخرة",
+          "زهور برية",
+          "ملحقات إضافية",
+          "هدية مميزة"
+        ],
+        img: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=900"
+      }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem('ggCart')) || [];
+    let notes = JSON.parse(localStorage.getItem('gardenNotes')) || [];
+    let uploadedPhotos = JSON.parse(localStorage.getItem('ggPhotos')) || [];
+    let fontSize = parseInt(localStorage.getItem('ggFontSize')) || 16;
+    let surveyVotes = JSON.parse(localStorage.getItem('ggSurveyVotes')) || {
+      "Oddbox": 0,
+      "Flourish": 0,
+      "Cottage": 0,
+      "Corporate Gift Box": 0
+    };
+
+    /* ===================== LOGIN ===================== */
+    function loginUser() {
+      const name = document.getElementById('loginName').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      if (!name || !password) {
+        alert("الرجاء إدخال الاسم/البريد وكلمة المرور.");
+        return;
+      }
+
+      localStorage.setItem('ggUser', name);
+      document.getElementById('loginOverlay').style.display = 'none';
+      alert(`مرحبًا ${name} 🌱`);
+    }
+
+    function googleLogin() {
+      const fakeGoogleUser = "Google User";
+      localStorage.setItem('ggUser', fakeGoogleUser);
+      document.getElementById('loginOverlay').style.display = 'none';
+      alert("تم تسجيل الدخول عبر Google بنجاح.");
+    }
+
+    function logoutUser() {
+      if (confirm("هل تريد تسجيل الخروج؟")) {
+        localStorage.removeItem('ggUser');
+        document.getElementById('loginOverlay').style.display = 'flex';
+      }
+    }
+
+    /* ===================== THEME ===================== */
+    function toggleTheme() {
+      const body = document.getElementById('mainBody');
+      const icon = document.querySelector('#themeCircle i');
+      body.classList.toggle('light-mode');
+
+      if (body.classList.contains('light-mode')) {
+        icon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'light');
+      } else {
+        icon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    /* ===================== FONT SIZE ===================== */
+    function applyFontSize() {
+      document.body.style.fontSize = fontSize + 'px';
+      localStorage.setItem('ggFontSize', fontSize);
+    }
+
+    function changeFontSize(step) {
+      fontSize += step;
+      if (fontSize < 14) fontSize = 14;
+      if (fontSize > 22) fontSize = 22;
+      applyFontSize();
+    }
+
+    function resetFontSize() {
+      fontSize = 16;
+      applyFontSize();
+    }
+
+    /* ===================== NAVIGATION ===================== */
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(pageId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo(0, 0);
+      }
+      document.getElementById('navLinks').classList.remove('show');
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+
+    /* ===================== FAQ ===================== */
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('i');
+
+      if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        icon.className = 'fas fa-plus';
+      } else {
+        answer.style.display = 'block';
+        icon.className = 'fas fa-minus';
+      }
+    }
+
+    /* ===================== MONTHLY CHECKLIST ===================== */
+    function renderChecklist() {
+      const checklistGrid = document.getElementById('checklistGrid');
+      checklistGrid.innerHTML = months.map((m, i) => `
+        <div class="glass-card">
+          <span style="color:var(--gold); font-weight:900; font-size:1.2rem;">${String(i+1).padStart(2, '0')}</span>
+          <h3 style="margin:12px 0 10px;">${m}</h3>
+          <p class="muted">تأكد في هذا الشهر من اتباع المهام الزراعية المناسبة للحفاظ على نمو صحي ومنتظم.</p>
+        </div>
+      `).join('');
+    }
+
+    /* ===================== STORE ===================== */
+    function renderStore() {
+      const storeGrid = document.getElementById('storeGrid');
+      const search = (document.getElementById('productSearch')?.value || '').toLowerCase().trim();
+      const filter = document.getElementById('productFilter')?.value || 'all';
+
+      const filteredBoxes = boxes.filter(b => {
+        const matchesSearch =
+          b.name.toLowerCase().includes(search) ||
+          b.desc.toLowerCase().includes(search) ||
+          b.features.some(f => f.toLowerCase().includes(search));
+
+        const matchesFilter =
+          filter === 'all' ||
+          b.type === filter ||
+          b.level === filter;
+
+        return matchesSearch && matchesFilter;
+      });
+
+      if (!filteredBoxes.length) {
+        storeGrid.innerHTML = `
+          <div class="glass-card" style="grid-column:1/-1; text-align:center;">
+            <i class="fas fa-box-open icon-big"></i>
+            <h3>لا توجد نتائج مطابقة</h3>
+            <p class="muted">جرّب البحث بكلمة أخرى أو غيّر التصنيف.</p>
+          </div>
+        `;
+        return;
+      }
+
+      storeGrid.innerHTML = filteredBoxes.map(b => `
+        <div class="glass-card product-card">
+          <img src="${b.img}" alt="${b.name}">
+          <span class="tag">${b.period}</span>
+          <h3>${b.name}</h3>
+          <p class="muted">${b.desc}</p>
+
+          <ul class="feature-list">
+            ${b.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
+          </ul>
+
+          <div class="product-price">$${b.price}</div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn-main" style="flex:1;" onclick="addToCart(${b.id})">
+              <i class="fas fa-cart-plus"></i> إضافة إلى السلة
+            </button>
+            <button class="btn-ghost" onclick="showPage('page-blog')">
+              <i class="fas fa-book-open"></i> المدونة
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(id) {
+      const item = boxes.find(b => b.id === id);
+      if (!item) return;
+
+      cart.push(item);
+      localStorage.setItem('ggCart', JSON.stringify(cart));
+      updateCartUI();
+      alert(`تمت إضافة "${item.name}" إلى السلة.`);
+      showPage('page-cart');
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('ggCart', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    function clearCart() {
+      if (!cart.length) return;
+      if (confirm("هل تريد تفريغ السلة؟")) {
+        cart = [];
+        localStorage.setItem('ggCart', JSON.stringify(cart));
+        updateCartUI();
+      }
+    }
+
+    function checkout() {
+      if (!cart.length) {
+        alert("السلة فارغة.");
+        return;
+      }
+      alert("تم إرسال طلبك بنجاح (محاكاة).");
+      cart = [];
+      localStorage.setItem('ggCart', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      document.getElementById('cartCount').innerText = cart.length;
+      const cartList = document.getElementById('cartItems');
+      const totalDiv = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        cartList.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-cart-shopping" style="font-size:2rem; margin-bottom:12px; color:var(--text-sub);"></i>
+            <p>لا توجد منتجات في السلة بعد.</p>
+            <p>ابدأ باختيار أحد الصناديق من المتجر.</p>
+          </div>
+        `;
+        totalDiv.innerText = "";
+        return;
+      }
+
+      cartList.innerHTML = cart.map((c, i) => `
+        <div class="cart-row">
+          <div>
+            <h4 style="margin-bottom:6px;">${c.name}</h4>
+            <small style="color:var(--text-sub)">${c.period}</small>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span class="pill">$${c.price}</span>
+            <button class="btn-danger" style="padding:10px 14px;" onclick="removeFromCart(${i})">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      totalDiv.innerText = `الإجمالي: $${total}`;
+    }
+
+    /* ===================== NOTEBOOK ===================== */
+    function addNote() {
+      const plant = document.getElementById('plantInput').value.trim();
+      const note = document.getElementById('noteInput').value.trim();
+
+      if (!plant || !note) {
+        alert("يرجى إدخال اسم النبتة والملاحظة.");
+        return;
+      }
+
+      notes.unshift({
+        plant,
+        note,
+        date: new Date().toLocaleDateString('ar-EG')
+      });
+
+      localStorage.setItem('gardenNotes', JSON.stringify(notes));
+      renderNotes();
+
+      document.getElementById('plantInput').value = "";
+      document.getElementById('noteInput').value = "";
+    }
+
+    function renderNotes() {
+      const list = document.getElementById('notesList');
+
+      if (!notes.length) {
+        list.innerHTML = `<p class="muted" style="margin-top:20px;">لا توجد ملاحظات بعد.</p>`;
+        return;
+      }
+
+      list.innerHTML = notes.map((note, index) => `
+        <div class="glass-card" style="margin-top:15px; padding:20px;">
+          <div style="display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap;">
+            <h4 style="color:var(--primary)">${note.plant}</h4>
+            <small style="color:var(--text-sub)">(${note.date})</small>
+          </div>
+          <p class="muted" style="margin-top:10px;">${note.note}</p>
+          <button class="btn-danger" style="margin-top:14px; padding:10px 16px;" onclick="deleteNote(${index})">
+            <i class="fas fa-trash"></i> حذف
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function deleteNote(index) {
+      notes.splice(index, 1);
+      localStorage.setItem('gardenNotes', JSON.stringify(notes));
+      renderNotes();
+    }
+
+    /* ===================== PHOTO CONTEST ===================== */
+    function uploadPhoto() {
+      const title = document.getElementById('photoTitle').value.trim();
+      const fileInput = document.getElementById('photoUpload');
+      const file = fileInput.files[0];
+
+      if (!title || !file) {
+        alert("يرجى إدخال عنوان الصورة واختيار ملف.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        uploadedPhotos.unshift({
+          title,
+          src: e.target.result
+        });
+
+        localStorage.setItem('ggPhotos', JSON.stringify(uploadedPhotos));
+        renderPhotoGallery();
+
+        document.getElementById('photoTitle').value = "";
+        fileInput.value = "";
+
+        alert("تم رفع الصورة بنجاح.");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderPhotoGallery() {
+      const gallery = document.getElementById('photoGallery');
+
+      if (!uploadedPhotos.length) {
+        gallery.innerHTML = `<p class="muted">لا توجد صور مرفوعة بعد.</p>`;
+        return;
+      }
+
+      gallery.innerHTML = uploadedPhotos.map((photo, index) => `
+        <div class="glass-card photo-card" style="padding:16px;">
+          <img src="${photo.src}" alt="${photo.title}" style="height:180px;">
+          <h4 style="margin-bottom:12px;">${photo.title}</h4>
+          <button class="btn-danger btn-block" onclick="deletePhoto(${index})">
+            <i class="fas fa-trash"></i> حذف
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function deletePhoto(index) {
+      uploadedPhotos.splice(index, 1);
+      localStorage.setItem('ggPhotos', JSON.stringify(uploadedPhotos));
+      renderPhotoGallery();
+    }
+
+    /* ===================== SURVEY ===================== */
+    function voteSurvey(option) {
+      surveyVotes[option]++;
+      localStorage.setItem('ggSurveyVotes', JSON.stringify(surveyVotes));
+
+      const totalVotes = Object.values(surveyVotes).reduce((a, b) => a + b, 0);
+      document.getElementById('surveyResult').innerHTML = `
+        شكراً لمشاركتك 🌱<br><br>
+        إجمالي الأصوات: ${totalVotes}<br>
+        Oddbox: ${surveyVotes["Oddbox"]} |
+        Flourish: ${surveyVotes["Flourish"]} |
+        Cottage: ${surveyVotes["Cottage"]} |
+        Corporate Gift Box: ${surveyVotes["Corporate Gift Box"]}
+      `;
+    }
+
+    /* ===================== CONTACT ===================== */
+    function sendContact() {
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const type = document.getElementById('contactType').value.trim();
+      const msg = document.getElementById('contactMessage').value.trim();
+
+      if (!name || !email || !type || !msg) {
+        alert("يرجى تعبئة جميع الحقول.");
+        return;
+      }
+
+      alert("تم إرسال طلبك بنجاح. سيتم التواصل معك لاحقًا.");
+      document.getElementById('contactName').value = "";
+      document.getElementById('contactEmail').value = "";
+      document.getElementById('contactType').value = "";
+      document.getElementById('contactMessage').value = "";
+    }
+
+    /* ===================== CHAT ===================== */
+    function toggleChat() {
+      const chatBox = document.getElementById('chatBox');
+      chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function handleChatKey(event) {
+      if (event.key === 'Enter') sendChatMessage();
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage(text, 'user');
+      input.value = '';
+
+      setTimeout(() => {
+        appendMessage(getBotReply(text), 'bot');
+      }, 700);
+    }
+
+    function appendMessage(text, type) {
+      const messages = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = `msg ${type}`;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function getBotReply(message) {
+      const msg = message.toLowerCase();
+
+      if (msg.includes('oddbox') || msg.includes('غريب')) {
+        return "صندوق Oddbox مناسب إذا كنت تحب المنتجات المختلفة، الشحن الأسبوعي، وبذور الخضروات.";
+      } else if (msg.includes('flourish')) {
+        return "صندوق Flourish ممتاز إذا كنت تريد تجربة بستنة متكاملة مع أدوات إضافية مثل علبة الري وصواني البذور.";
+      } else if (msg.includes('cottage')) {
+        return "صندوق Cottage مناسب لمحبي الزهور البرية واللمسات الطبيعية المنزلية.";
+      } else if (msg.includes('شركة') || msg.includes('هدية') || msg.includes('مخصص')) {
+        return "بالنسبة للصناديق المخصصة أو هدايا الشركات، يُفضل استخدام صفحة التواصل لطلب التفاصيل.";
+      } else if (msg.includes('سعر') || msg.includes('كم')) {
+        return "يمكنك مشاهدة الأسعار كاملة داخل صفحة المتجر، وكل اختيار يذهب مباشرة إلى سلة المشتريات.";
+      } else if (msg.includes('مرحبا') || msg.includes('السلام')) {
+        return "مرحبًا بك 🌱 كيف أساعدك في اختيار الصندوق المناسب؟";
+      } else if (msg.includes('مبتدئ') || msg.includes('ابدأ')) {
+        return "إذا كنت مبتدئًا، فننصحك غالبًا بصندوق Flourish أو Urban Balcony Box أو Herb Kitchen Box.";
+      } else if (msg.includes('أفضل') || msg.includes('مقارنة')) {
+        return "إذا كنت تريد شحنًا أسبوعيًا اختر Oddbox أو Herb Kitchen Box، وإذا كنت تريد تجربة متكاملة اختر Flourish، وإذا كنت تحب الزهور البرية اختر Cottage.";
+      } else if (msg.includes('طفل') || msg.includes('أطفال')) {
+        return "صندوق Kids Grow Box مناسب جدًا للأطفال لأنه يجمع بين التعليم والمتعة.";
+      } else {
+        return "شكرًا لك. يمكنك سؤالي عن الصناديق، الأسعار، الاشتراكات، الهدايا، أو طريقة الاستخدام.";
+      }
+    }
+
+    /* ===================== INIT ===================== */
+    window.onload = () => {
+      renderStore();
+      renderChecklist();
+      renderNotes();
+      renderPhotoGallery();
+      updateCartUI();
+      applyFontSize();
+
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('#themeCircle i').className = 'fas fa-sun';
+      }
+
+      const savedUser = localStorage.getItem('ggUser');
+      if (savedUser) {
+        document.getElementById('loginOverlay').style.display = 'none';
+      } else {
+        document.getElementById('loginOverlay').style.display = 'flex';
+      }
+
+      const totalVotes = Object.values(surveyVotes).reduce((a, b) => a + b, 0);
+      if (totalVotes > 0) {
+        document.getElementById('surveyResult').innerHTML = `
+          إجمالي الأصوات: ${totalVotes}<br>
+          Oddbox: ${surveyVotes["Oddbox"]} |
+          Flourish: ${surveyVotes["Flourish"]} |
+          Cottage: ${surveyVotes["Cottage"]} |
+          Corporate Gift Box: ${surveyVotes["Corporate Gift Box"]}
+        `;
+      }
+    };
+  </script>
+</body>
+</html>
+  
